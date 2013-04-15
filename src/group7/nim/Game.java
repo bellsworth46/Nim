@@ -228,46 +228,33 @@ public class Game
 	{
 		if (board.row1 == 0 && board.row2 == 0)
 		{
-			if (board.row3 > 1)
-			{
-				System.out.println("Row Number: 3\nCount Removed: " + (board.row3 - 1));
-				board.row3 = 1;
-			}
-			else
-			{
-				board.row3 = 0;
-				System.out.println("Row Number: 3\nCount Removed: 1");
-			}
+			board.row3 = rowCheck(board.row3, 3);
 		}
 		else if (board.row1 == 0 && board.row3 == 0)
 		{
-			if (board.row2 > 1)
-			{
-				board.row2 = 1;
-				System.out.println("Row Number: 2\nCount Removed: " + (board.row3 - 1));
-			}
-			else
-			{
-				board.row2 = 0;
-				System.out.println("Row Number: 2\nCount Removed: 1");
-			}
+			board.row2 = rowCheck(board.row2, 2);
 		}
 		else if(board.row2 == 0 && board.row3 == 0)
 		{
-			if (board.row1 > 1)
-			{
-				board.row1 = 1;
-				System.out.println("Row Number: 1\nCount Removed: " + (board.row3 - 1));
-			}
-			else
-			{
-				board.row1 = 0;
-				System.out.println("Row Number: 1\nCount Removed: 1");
-			}
+			board.row1 = rowCheck(board.row1, 1);
 		}
 		else
 		{
 			randomRowSelect();
+		}
+	}
+	
+	public int rowCheck(int rowCount, int rowNum)
+	{
+		if (rowCount > 1)
+		{
+			System.out.println("Row Number: " + rowNum + "\nCount Removed: " + (rowCount - 1));
+			return 1;
+		}
+		else
+		{
+			System.out.println("Row Number: " + rowNum + "\nCount Removed: 1");
+			return 0;
 		}
 	}
 	
@@ -297,62 +284,6 @@ public class Game
 		}
 		
 		board = wantedState;
-//		int row = rand.nextInt(3)+1;
-//		
-//		if (row == 1)
-//		{
-//			if (board.row1 > 1)
-//			{
-//				int count = rand.nextInt(board.row1) + 1;
-//				board.row1 = board.row1 - count;
-//				System.out.println("Row Number: 1\nCount Removed: " + count);
-//			}
-//			else if (board.row1 == 1)
-//			{
-//				board.row1 = 0;
-//				System.out.println("Row Number: 1\nCount Removed: 1");
-//			}
-//			else
-//				randomRowSelect();
-//		}
-//		else if (row == 2)
-//		{
-//			if (board.row2 > 1)
-//			{
-//				int count = rand.nextInt(board.row2) + 1;
-//				board.row2 = board.row2 - count;
-//				System.out.println("Row Number: 2\nCount Removed: " + count);
-//			}
-//			else if (board.row2 == 1)
-//			{
-//				board.row2 = 0;
-//				System.out.println("Row Number: 2\nCount Removed: 1");
-//			}
-//			else
-//				randomRowSelect();
-//		}
-//		if (row == 3)
-//		{
-//			if (board.row3 > 1)
-//			{
-//				int count = rand.nextInt(board.row3) + 1;
-//				board.row3 = board.row3 - count;
-//				System.out.println("Row Number: 3\nCount Removed: " + count);
-//			}
-//			else if (board.row3 == 1)
-//			{
-//				board.row3 = 0;
-//				System.out.println("Row Number: 3\nCount Removed: 1");
-//			}
-//			else
-//				randomRowSelect();
-//		}
-//		try {
-//			Thread.sleep(3000);
-//		} catch (InterruptedException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
 	}
 	
 	private void getMoves()
